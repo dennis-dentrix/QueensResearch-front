@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2e7d32;
+  --color-accent: #f97316;
+  --color-background: #f8fafc;
+  --color-text: #1e293b;
+  --color-secondary: #faab0d;
+  --color-subtle: #e8e9ed;
+
+  /* Custom utility for success, derived from primary for a good contrast */
+  --color-success: #15803d;
+}
+
+html {
+  /* Sets 1rem to 10px (16px * 0.625) for easier size calculation */
+  /* font-size: 62.5%; */
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

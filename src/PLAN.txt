@@ -1,0 +1,24 @@
+- The ORDERS.JSX file will list all the orders under user account
+- Need to show the available orders
+- Need to show orders in progress
+- Need to create a chat system, maybe use the WhatsApp api intergrated
+- Send notification to writer when order is available, due, late, needs revision, etc. 
+- User registration and signup
+- Invoice system
+- Settings page maybe
+- Notifications page
+
+
+WHAT CAN USERS DO?
+- Login/ Register
+- Verify phone number / email
+- Post an order (Admin)
+- Get notified when order is posted, needs revision, is late or is due
+- Notify admin when writer has submitted an assignment
+- Writer should view order, accept order or reject order, submit order, complete Order, update submission
+- Ability to recive and view Notifications
+- Admin needs to have a view of invoice of the writers. 
+
+WHAT SYSTEM WILL DO
+- Show paid and unpaid orders, 
+- show completed, incomplete, and new orders
