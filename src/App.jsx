@@ -4,8 +4,11 @@ import AppLayout from "./ui/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import Menu from "./pages/Menu";
 import Orders from "./pages/Orders";
-import Chat from "./pages/Chat";
-import Settings from "./pages/Settings";
+import Chat from "./features/chat/Chat";
+import Settings from "./features/settings/Settings";
+import Profile from "./features/settings/Profile";
+import Security from "./features/settings/Security";
+import Privacy from "./features/settings/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <Settings />,
+        children: [
+          { path: "profile", element: <Profile /> },
+          { path: "security", element: <Security /> },
+          {
+            path: "privacy", element: <Privacy />
+          }
+
+        ],
       },
     ],
   },

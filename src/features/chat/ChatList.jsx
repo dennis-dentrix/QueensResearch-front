@@ -1,5 +1,5 @@
 import { CheckCheck, Search } from 'lucide-react'
-import profileimg from '../assets/images/woman.png'
+import profileimg from '../../assets/images/woman.png';
 
 export default function ChatList({ onSelectChat, chats }) {
 
