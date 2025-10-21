@@ -7,9 +7,10 @@ import {
   LogOut,
   MessageCircleMore,
   X,
+  Utensils,
 } from "lucide-react";
 import { Link, useLocation } from "react-router";
-import queensLogo from "../assets/logo.jpg";
+import gomealLogo from "../assets/logo.jpg";
 
 function NavItem({ to, icon, children, isActive, isDanger = false }) {
   const baseClasses =
@@ -18,8 +19,8 @@ function NavItem({ to, icon, children, isActive, isDanger = false }) {
   const stateClasses = isActive
     ? "bg-primary/10 text-primary"
     : isDanger
-    ? "text-text/80 hover:bg-danger/10 hover:text-danger"
-    : "text-text/80 hover:bg-background";
+      ? "text-text/80 hover:bg-danger/10 hover:text-danger"
+      : "text-text/80 hover:bg-background";
 
   return (
     <Link to={to} className={`${baseClasses} ${stateClasses}`}>
@@ -56,9 +57,8 @@ export default function SideNav({ isOpen, setIsOpen }) {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen w-64 bg-background z-30 transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } 
+        className={`fixed top-0 left-0 h-screen w-64 bg-background z-30 transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"
+          } 
     lg:translate-x-0
   `}
       >
@@ -67,14 +67,12 @@ export default function SideNav({ isOpen, setIsOpen }) {
           <header className="flex items-center justify-between p-4 border-b border-subtle">
             <div className="flex items-center gap-2 cursor-pointer">
               <img
-                src={queensLogo}
+                src={gomealLogo}
                 alt="QueensReaserch Logo"
                 className="w-8 rounded-full"
               />
               {/* Uses text-lg (18px) for logo text */}
-              <span className="text-xl font-bold text-text">
-                QueensReaserch
-              </span>
+              <span className="text-xl font-bold text-text">GoMeal.</span>
             </div>
             <button
               className="p-1.5 rounded-lg hover:bg-background lg:hidden"
@@ -85,9 +83,7 @@ export default function SideNav({ isOpen, setIsOpen }) {
           </header>
 
           {/* Navigation */}
-          {/* Standardized px-3 and py-4 for padding within the nav area */}
-          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-            <NavGroupHeader>Overview</NavGroupHeader>
+          <nav className="flex-1 justify-between px-3 py-4 space-y-1 overflow-y-auto">
             <NavItem
               to="/"
               icon={<LayoutDashboard size={20} />}
@@ -96,13 +92,20 @@ export default function SideNav({ isOpen, setIsOpen }) {
               Dashboard
             </NavItem>
 
-            <NavGroupHeader>Workspace</NavGroupHeader>
+            <NavItem
+              to="/menu"
+              icon={<Utensils size={20} />}
+              isActive={activePath === "/menu"}
+            >
+              Menu
+            </NavItem>
+
             <NavItem
               to="/orders"
               icon={<FolderKanban size={20} />}
               isActive={activePath === "/orders"}
             >
-              Orders
+              Food Orders
             </NavItem>
             <NavItem
               to="/chat"
@@ -112,21 +115,7 @@ export default function SideNav({ isOpen, setIsOpen }) {
               Chat
             </NavItem>
 
-            <NavGroupHeader>Account</NavGroupHeader>
-            <NavItem
-              to="/profile"
-              icon={<User size={20} />}
-              isActive={activePath === "/profile"}
-            >
-              Profile
-            </NavItem>
-            <NavItem
-              to="/invoices"
-              icon={<Wallet size={20} />}
-              isActive={activePath === "/invoices"}
-            >
-              Invoices
-            </NavItem>
+
             <NavItem
               to="/settings"
               icon={<Settings size={20} />}

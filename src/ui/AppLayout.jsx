@@ -1,28 +1,42 @@
-// AppLayout.jsx
-import React, { useState } from "react"; // 1. Import useState
+import { useState } from "react";
 import { Outlet } from "react-router";
 import SideNav from "./SideNav";
 import TopBar from "./Topbar";
 
 export default function AppLayout() {
-  // 2. State for sidebar visibility
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // 3. Toggle function to pass to TopBar
   const handleMenuToggle = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
-    <div className="flex  bg-background text-text">
-      {/* 4. Pass the state and setter to SideNav */}
+    <div className="relative flex min-h-screen bg-gray-50 text-gray-800 overflow-x-hidden ">
+
+      {/* 1. SideNav Component */}
       <SideNav isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-      {/* 5. Pass the toggle function to TopBar */}
-      <div className="flex-1 flex flex-col min-w-0 relative lg:pl-64">
+      {/* 2. Mobile Backdrop/Overlay (Only visible when open on small screens) */}
+      {isSidebarOpen && (
+        <div
+          onClick={handleCloseSidebar}
+          className="fixed inset-0 z-20 bg-black/50 transition-opacity duration-300 lg:hidden"
+          role="presentation"
+        />
+      )}
+
+      {/* 3. Main Content Area */}
+      <main className="flex-1 flex flex-col min-h-screen lg:pl-64">
         <TopBar onMenuToggle={handleMenuToggle} />
-        <Outlet />
-      </div>
+        <div className="flex-1 flex flex-col overflow-hidden p-4 md:px-8">
+          <Outlet />
+        </div>
+      </main>
+
     </div>
   );
 }
